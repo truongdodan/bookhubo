@@ -1,0 +1,138 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<div class="text-center mb-5">
+    <h1 class="display-3 fw-bold text-primary">
+        <i class="bi bi-book-fill"></i> Chào mừng đến BookHub
+    </h1>
+    <p class="lead text-muted">Sàn thương mại điện tử mua bán sách trực tuyến</p>
+</div>
+
+@if (Context.Session.GetInt32("UserId") == null)
+{
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body p-5">
+                    <h3 class="card-title text-center mb-4">Bắt đầu sử dụng BookHub</h3>
+                    <p class="text-center text-muted mb-4">
+                        Đăng nhập hoặc đăng ký để mua bán sách, quản lý đơn hàng và nhiều tính năng khác
+                    </p>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="card border-primary h-100">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-box-arrow-in-right display-4 text-primary mb-3"></i>
+                                    <h5 class="card-title">Đã có tài khoản?</h5>
+                                    <p class="card-text text-muted">Đăng nhập để tiếp tục mua sắm</p>
+                                    <a asp-controller="Account" asp-action="Login" class="btn btn-primary btn-lg w-100">
+                                        <i class="bi bi-box-arrow-in-right"></i> Đăng nhập
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card border-success h-100">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-person-plus display-4 text-success mb-3"></i>
+                                    <h5 class="card-title">Người dùng mới?</h5>
+                                    <p class="card-text text-muted">Tạo tài khoản miễn phí ngay</p>
+                                    <a asp-controller="Account" asp-action="Register" class="btn btn-success btn-lg w-100">
+                                        <i class="bi bi-person-plus"></i> Đăng ký
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    var userName = Context.Session.GetString("UserName");
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-success text-center">
+                <h4 class="alert-heading">
+                    <i class="bi bi-check-circle"></i> Xin chào, @userName!
+                </h4>
+                <p class="mb-0">Bạn đã đăng nhập thành công. Các tính năng khác đang được phát triển.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <i class="bi bi-person-circle display-4 text-primary mb-3"></i>
+                    <h5 class="card-title">Thông tin cá nhân</h5>
+                    <p class="card-text text-muted">Xem và cập nhật thông tin tài khoản</p>
+                    <a asp-controller="Account" asp-action="Profile" class="btn btn-outline-primary">
+                        <i class="bi bi-arrow-right"></i> Truy cập
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <i class="bi bi-book display-4 text-warning mb-3"></i>
+                    <h5 class="card-title">Danh sách sách</h5>
+                    <p class="card-text text-muted">Xem tất cả sách đang có</p>
+                    <button class="btn btn-outline-secondary" disabled>
+                        Sắp ra mắt
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-center h-100">
+                <div class="card-body">
+                    <i class="bi bi-cart display-4 text-success mb-3"></i>
+                    <h5 class="card-title">Giỏ hàng</h5>
+                    <p class="card-text text-muted">Xem sách trong giỏ hàng</p>
+                    <button class="btn btn-outline-secondary" disabled>
+                        Sắp ra mắt
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row mt-5">
+    <div class="col-12">
+        <hr>
+        <h4 class="text-center mb-4">Tính năng của BookHub</h4>
+        <div class="row text-center">
+            <div class="col-md-3">
+                <i class="bi bi-shield-check display-5 text-primary"></i>
+                <h6 class="mt-2">An toàn</h6>
+                <small class="text-muted">Giao dịch bảo mật</small>
+            </div>
+            <div class="col-md-3">
+                <i class="bi bi-truck display-5 text-success"></i>
+                <h6 class="mt-2">Giao hàng</h6>
+                <small class="text-muted">Nhanh chóng</small>
+            </div>
+            <div class="col-md-3">
+                <i class="bi bi-star-fill display-5 text-warning"></i>
+                <h6 class="mt-2">Đánh giá</h6>
+                <small class="text-muted">Người bán uy tín</small>
+            </div>
+            <div class="col-md-3">
+                <i class="bi bi-headset display-5 text-info"></i>
+                <h6 class="mt-2">Hỗ trợ</h6>
+                <small class="text-muted">24/7</small>
+            </div>
+        </div>
+    </div>
+</div>
